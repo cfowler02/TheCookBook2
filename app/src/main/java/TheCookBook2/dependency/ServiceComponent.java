@@ -25,11 +25,11 @@ public interface ServiceComponent {
 
     //RateFoodRecipeActivity provideRateFoodRecipeActivity();
 
-    //SearchDrinkRecipeActivity provideSearchDrinkRecipeActivity();
+    SearchDrinkRecipeActivity provideSearchDrinkRecipeActivity();
 
-    //SearchFoodRecipeActivity provideSearchFoodRecipeActivity();
+    SearchFoodRecipeActivity provideSearchFoodRecipeActivity();
 
-    //ViewDrinkRecipeActivity provideViewDrinkRecipeActivity();
+    ViewDrinkRecipeActivity provideViewDrinkRecipeActivity();
 
-    //ViewFoodRecipeActivity provideViewFoodRecipeActivity();
+    ViewFoodRecipeActivity provideViewFoodRecipeActivity();
 }
