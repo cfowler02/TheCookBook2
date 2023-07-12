@@ -17,9 +17,9 @@ public interface ServiceComponent {
 
     CreateDrinkRecipeActivity provideCreateDrinkRecipeActivity();
 
-    //GetFoodRecipeActivity provideGetFoodRecipeActivity();
+    GetFoodRecipeActivity provideGetFoodRecipeActivity();
 
-    //GetDrinkRecipeActivity provideGetDrinkRecipeActivity();
+    GetDrinkRecipeActivity provideGetDrinkRecipeActivity();
 
     //RateDrinkRecipeActivity provideRateDrinkRecipeActivity();
 
