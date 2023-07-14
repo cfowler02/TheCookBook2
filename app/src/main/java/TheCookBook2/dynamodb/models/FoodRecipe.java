@@ -5,10 +5,7 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @DynamoDBTable(tableName = "food_recipes")
 public class FoodRecipe {
@@ -22,7 +19,7 @@ public class FoodRecipe {
     private String foodCategory;
     private String foodItem;
     private Set<String> allergies;
-    private Map<Integer, Integer> ratings;
+    private Map<String, Integer> ratings;
 
     @DynamoDBHashKey(attributeName = "creator")
     public String getCreator() {
@@ -113,11 +110,11 @@ public class FoodRecipe {
     }
 
     @DynamoDBAttribute(attributeName = "ratings")
-    public Map<Integer, Integer> getRatings() {
+    public Map<String, Integer> getRatings() {
         return ratings;
     }
 
-    public void setRatings(Map<Integer, Integer> ratings) {
+    public void setRatings(Map<String, Integer> ratings) {
         this.ratings = ratings;
     }
 

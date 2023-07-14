@@ -91,10 +91,7 @@ public class ViewFoodRecipeActivityTest {
         instructions.add("buy takeout");
         foodRecipe.setInstructionSteps(instructions);
         foodRecipe.setTimeEstimate(0);
-        Map<Integer, Integer> ratings = new HashMap<>();
-        ratings.put(-1,0);
-        ratings.put(0,0);
-        ratings.put(1,0);
+        Map<String, Integer> ratings = new HashMap<>();
         foodRecipe.setRatings(ratings);
         foodRecipe.setAllergies(null);
 

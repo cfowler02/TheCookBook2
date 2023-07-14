@@ -88,10 +88,7 @@ public class ViewDrinkRecipeActivityTest {
         LinkedList<String> instructions = new LinkedList<>();
         instructions.add("buy takeout");
         drinkRecipe.setInstructionSteps(instructions);
-        Map<Integer, Integer> ratings = new HashMap<>();
-        ratings.put(-1,0);
-        ratings.put(0,0);
-        ratings.put(1,0);
+        Map<String, Integer> ratings = new HashMap<>();
         drinkRecipe.setRatings(ratings);
         drinkRecipe.setAllergies(null);
 
