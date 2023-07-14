@@ -18,12 +18,12 @@ public class CreateDrinkRecipeRequest {
     private final String drinkCategory;
     private final String drinkItem;
     private final Set<String> allergies;
-    private final Map<Integer, Integer> ratings;
+    private final Map<String, Integer> ratings;
 
     public CreateDrinkRecipeRequest(String creator, String recipeTitle, Map<String, String> ingredients,
                                     LinkedList<String> instructionSteps, String description,
                                     Set<String> descriptionTags, String drinkCategory, String drinkItem,
-                                    Set<String> allergies, Map<Integer, Integer> ratings) {
+                                    Set<String> allergies, Map<String, Integer> ratings) {
         this.creator = creator;
         this.recipeTitle = recipeTitle;
         this.ingredients = ingredients;
@@ -72,7 +72,7 @@ public class CreateDrinkRecipeRequest {
         return allergies;
     }
 
-    public Map<Integer, Integer> getRatings() {
+    public Map<String, Integer> getRatings() {
         return ratings;
     }
 
@@ -109,7 +109,7 @@ public class CreateDrinkRecipeRequest {
         private String drinkCategory;
         private String drinkItem;
         private Set<String> allergies;
-        private Map<Integer, Integer> ratings;
+        private Map<String, Integer> ratings;
 
         public Builder withCreator(String creator) {
             this.creator = creator;
@@ -156,7 +156,7 @@ public class CreateDrinkRecipeRequest {
             return this;
         }
 
-        public Builder withRatings(Map<Integer, Integer> ratings) {
+        public Builder withRatings(Map<String, Integer> ratings) {
             this.ratings = ratings;
             return this;
         }

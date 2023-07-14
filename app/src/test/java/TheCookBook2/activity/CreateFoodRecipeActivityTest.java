@@ -46,10 +46,9 @@ public class CreateFoodRecipeActivityTest {
         String expectedFoodCategory = "expectedFoodCategory";
         String expectedFoodItem = "expectedFoodItem";
         Set<String> expectedAllergies = new HashSet<>();
-        Map<Integer, Integer> expectedRatings = new HashMap<>();
-        expectedRatings.put(-1, 0);
-        expectedRatings.put(0, 1);
-        expectedRatings.put(1, 2);
+        Map<String, Integer> expectedRatings = new HashMap<>();
+        expectedRatings.put("test", 0);
+
 
         FoodRecipe foodRecipe = new FoodRecipe();
         foodRecipe.setCreator(expectedCreator);

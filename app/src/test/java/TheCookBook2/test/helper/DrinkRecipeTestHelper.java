@@ -23,10 +23,7 @@ public class DrinkRecipeTestHelper {
         drinkRecipe.setDrinkItem("drink item");
         Set<String> allergies = new HashSet<>();
         drinkRecipe.setAllergies(allergies);
-        Map<Integer, Integer> ratings = new HashMap<>();
-        ratings.put(-1, 0);
-        ratings.put(0, 0);
-        ratings.put(1, 0);
+        Map<String, Integer> ratings = new HashMap<>();
         drinkRecipe.setRatings(ratings);
 
         return drinkRecipe;

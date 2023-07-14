@@ -18,12 +18,12 @@ public class FoodRecipeModel {
     private final String foodCategory;
     private final String foodItem;
     private final Set<String> allergies;
-    private final Map<Integer, Integer> ratings;
+    private final Map<String, Integer> ratings;
 
     private FoodRecipeModel(String creator, String recipeTitle, Map<String, String> ingredients,
                             LinkedList<String> instructionSteps, String description, Set<String> descriptionTags,
                             int timeEstimate, String foodCategory, String foodItem, Set<String> allergies,
-                            Map<Integer, Integer> ratings) {
+                            Map<String, Integer> ratings) {
         this.creator = creator;
         this.recipeTitle = recipeTitle;
         this.ingredients = ingredients;
@@ -78,7 +78,7 @@ public class FoodRecipeModel {
         return allergies;
     }
 
-    public Map<Integer, Integer> getRatings() {
+    public Map<String, Integer> getRatings() {
         return ratings;
     }
 
@@ -124,7 +124,7 @@ public class FoodRecipeModel {
         private String foodCategory;
         private String foodItem;
         private Set<String> allergies;
-        private Map<Integer, Integer> ratings;
+        private Map<String, Integer> ratings;
 
         public Builder withCreator(String creator) {
             this.creator = creator;
@@ -176,7 +176,7 @@ public class FoodRecipeModel {
             return this;
         }
 
-        public Builder withRatings(Map<Integer, Integer> ratings) {
+        public Builder withRatings(Map<String, Integer> ratings) {
             this.ratings = ratings;
             return this;
         }
