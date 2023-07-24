@@ -225,7 +225,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.CreateFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -245,7 +245,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.CreateDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -265,7 +265,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -285,7 +285,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -305,7 +305,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -325,7 +325,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -345,7 +345,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -365,7 +365,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -385,7 +385,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -405,7 +405,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
-      CodeUri: TheCookBookServiceLambda
+      CodeUri: app
       Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
