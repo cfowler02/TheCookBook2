@@ -41,6 +41,7 @@ public class DrinkRecipeDao {
     }
 
     public DrinkRecipe saveDrinkRecipe(DrinkRecipe drinkRecipe) {
+        System.out.println(drinkRecipe.toString());
         this.dynamoDBMapper.save(drinkRecipe);
         return drinkRecipe;
     }

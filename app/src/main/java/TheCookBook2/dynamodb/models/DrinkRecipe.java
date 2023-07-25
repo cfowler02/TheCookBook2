@@ -1,9 +1,7 @@
 package TheCookBook2.dynamodb.models;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import TheCookBook2.converters.RecipeLinkedListConverter;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 import java.util.*;
 
@@ -48,6 +46,7 @@ public class DrinkRecipe {
         this.ingredients = ingredients;
     }
 
+    @DynamoDBTypeConverted(converter = RecipeLinkedListConverter.class)
     @DynamoDBAttribute(attributeName = "instruction_steps")
     public LinkedList<String> getInstructionSteps() {
         return instructionSteps;

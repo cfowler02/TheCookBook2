@@ -15,8 +15,7 @@ public class CreateDrinkRecipeLambda
         return super.runActivity(
                 () -> {
                     CreateDrinkRecipeRequest unauthenticatedRequest = input.fromBody(CreateDrinkRecipeRequest.class);
-                    return input.fromUserClaims(claims ->
-                            CreateDrinkRecipeRequest.builder()
+                    return CreateDrinkRecipeRequest.builder()
                                     .withCreator(unauthenticatedRequest.getCreator())
                                     .withRecipeTitle(unauthenticatedRequest.getRecipeTitle())
                                     .withIngredients(unauthenticatedRequest.getIngredients())
@@ -27,7 +26,7 @@ public class CreateDrinkRecipeLambda
                                     .withDrinkItem(unauthenticatedRequest.getDrinkItem())
                                     .withAllergies(unauthenticatedRequest.getAllergies())
                                     .withRatings(unauthenticatedRequest.getRatings())
-                                    .build());
+                                    .build();
                 },
                 (request, serviceComponent) ->
                         serviceComponent.provideCreateDrinkRecipeActivity().handleRequest(request)
