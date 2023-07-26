@@ -45,6 +45,10 @@ public class DrinkRecipeDao {
         return drinkRecipe;
     }
 
+    public void deleteDrinkRecipe(DrinkRecipe drinkRecipe){
+        this.dynamoDBMapper.delete(drinkRecipe);
+    }
+
     public List<DrinkRecipe> searchDrinkRecipe(String filter, String criteria) {
         DynamoDBScanExpression dynamoDBScanExpression = new DynamoDBScanExpression();
         DynamoDBQueryExpression<DrinkRecipe> dynamoDBQueryExpression = new DynamoDBQueryExpression<DrinkRecipe>();

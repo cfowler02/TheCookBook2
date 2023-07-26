@@ -42,6 +42,10 @@ public class FoodRecipeDao {
         return foodRecipe;
     }
 
+    public void deleteFoodRecipe(FoodRecipe foodRecipe) {
+        this.dynamoDBMapper.delete(foodRecipe);
+    }
+
     public List<FoodRecipe> searchFoodRecipe(String filter, String criteria) {
         DynamoDBScanExpression dynamoDBScanExpression = new DynamoDBScanExpression();
         DynamoDBQueryExpression<FoodRecipe> dynamoDBQueryExpression = new DynamoDBQueryExpression<FoodRecipe>();
