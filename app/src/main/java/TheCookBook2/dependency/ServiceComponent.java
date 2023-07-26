@@ -17,13 +17,17 @@ public interface ServiceComponent {
 
     CreateDrinkRecipeActivity provideCreateDrinkRecipeActivity();
 
+    DeleteFoodRecipeActivity provideDeleteFoodRecipeActivity();
+
+    DeleteDrinkRecipeActivity provideDeleteDrinkRecipeActivity();
+
     GetFoodRecipeActivity provideGetFoodRecipeActivity();
 
     GetDrinkRecipeActivity provideGetDrinkRecipeActivity();
 
-    //RateDrinkRecipeActivity provideRateDrinkRecipeActivity();
+    RateDrinkRecipeActivity provideRateDrinkRecipeActivity();
 
-    //RateFoodRecipeActivity provideRateFoodRecipeActivity();
+    RateFoodRecipeActivity provideRateFoodRecipeActivity();
 
     SearchDrinkRecipeActivity provideSearchDrinkRecipeActivity();
 
