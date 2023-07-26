@@ -8,7 +8,7 @@ Parameters:
   CognitoDomain:
     Type: String
     Description: A name for the cognito Domain
-    Default: "project-thecookbook-chase.fowler"
+    Default: "project-thecookbook-chase-fowler"
 
   S3Bucket:
     Type: String
@@ -226,7 +226,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.CreateFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2..lambda.CreateFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -246,7 +246,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.CreateDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.CreateDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -266,7 +266,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -286,7 +286,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -306,7 +306,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -326,7 +326,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -346,7 +346,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -366,7 +366,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -386,7 +386,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -406,7 +406,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: com.nashss.se.thecookbookservice.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -431,12 +431,12 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "creator"
           AttributeType: "S"
-        - AttributeName: "recipeTitle"
+        - AttributeName: "recipe_title"
           AttributeType: "S"
       KeySchema:
         - AttributeName: "creator"
           KeyType: "HASH"
-        - AttributeName: "recipeTitle"
+        - AttributeName: "recipe_title"
           KeyType: "RANGE"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "food_recipes"
@@ -447,12 +447,12 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "creator"
           AttributeType: "S"
-        - AttributeName: "recipeTitle"
+        - AttributeName: "recipe_title"
           AttributeType: "S"
       KeySchema:
         - AttributeName: "creator"
           KeyType: "HASH"
-        - AttributeName: "recipeTitle"
+        - AttributeName: "recipe_title"
           KeyType: "RANGE"
       BillingMode: "PAY_PER_REQUEST"
       TableName: "drink_recipes"
