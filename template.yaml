@@ -261,6 +261,46 @@ Resources:
             Path: /drinkRecipes
             Method: post
 
+  DeleteFoodRecipeLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessRole.Arn
+      CodeUri: app
+      Handler: TheCookBook2..lambda.DeleteFoodRecipeLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        TheCookBookService:
+          Type: Api
+          Properties:
+            Path: /foodRecipes
+            Method: delete
+
+  DeleteDrinkRecipeLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessRole.Arn
+      CodeUri: app
+      Handler: TheCookBook2.lambda.DeleteDrinkRecipeLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        TheCookBookService:
+          Type: Api
+          Properties:
+            Path: /drinkRecipes
+            Method: delete
+
   GetFoodRecipeLambda:
     Type: AWS::Serverless::Function
     Properties:
