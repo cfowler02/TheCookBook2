@@ -278,7 +278,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes
+            Path: /foodRecipes/{creator}/title/{recipeTitle}
             Method: delete
 
   DeleteDrinkRecipeLambda:
@@ -298,7 +298,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes
+            Path: /drinkRecipes/{creator}/title/{recipeTitle}
             Method: delete
 
   GetFoodRecipeLambda:
@@ -358,7 +358,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes/{creator}/title/{recipeTitle}/rating/{rating}
+            Path: /foodRecipes/{creator}/title/{recipeTitle}/user/{user}/rating/{rating}
             Method: put
 
   RateDrinkRecipeLambda:
@@ -378,7 +378,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes/{creator}/title/{recipeTitle}/rating/{rating}
+            Path: /drinkRecipes/{creator}/title/{recipeTitle}/user/{user}/rating/{rating}
             Method: put
 
   SearchFoodRecipeLambda:
