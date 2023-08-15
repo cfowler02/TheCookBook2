@@ -346,7 +346,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.RateFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -366,7 +366,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.RateDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -378,7 +378,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes/{creator}/title/{recipeTitle}/user/{user}/rating/{rating}
+            Path: /drinkRecipes/
             Method: put
 
   SearchFoodRecipeLambda:
@@ -386,7 +386,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.SearchFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -406,7 +406,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.SearchDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -426,7 +426,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.ViewFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -446,7 +446,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.ViewDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
