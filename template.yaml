@@ -320,6 +320,8 @@ Resources:
           Properties:
             Path: /foodRecipes/get/{creator}/{recipeTitle}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   GetDrinkRecipeLambda:
     Type: AWS::Serverless::Function
@@ -340,6 +342,8 @@ Resources:
           Properties:
             Path: /drinkRecipes/get/{creator}/{recipeTitle}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   RateFoodRecipeLambda:
     Type: AWS::Serverless::Function
@@ -400,6 +404,8 @@ Resources:
           Properties:
             Path: /foodRecipes/search/{filter}/{criteria}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   SearchDrinkRecipeLambda:
     Type: AWS::Serverless::Function
@@ -420,6 +426,8 @@ Resources:
           Properties:
             Path: /drinkRecipes/search/{filter}/{criteria}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   ViewFoodRecipeLambda:
     Type: AWS::Serverless::Function
@@ -440,6 +448,8 @@ Resources:
           Properties:
             Path: /foodRecipes
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   ViewDrinkRecipeLambda:
     Type: AWS::Serverless::Function
@@ -460,6 +470,8 @@ Resources:
           Properties:
             Path: /drinkRecipes
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   #-----------------------------------------------------
   # DynamoDB Configuration
