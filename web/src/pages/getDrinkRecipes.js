@@ -19,7 +19,7 @@ The "KEY" constants will be reused a few times below.
 /**
  * Logic needed for the view playlist page of the website.
  */
-class getDrinkRecipes extends BindingClass {
+class DrinkRecipes extends BindingClass {
     constructor() {
         super();
 
@@ -78,15 +78,13 @@ class getDrinkRecipes extends BindingClass {
             return '<h4>No results found</h4>';
         }
 
-        let html = '<table><tr><th>Name</th><th>Song Count</th><th>Tags</th></tr>';
+        let html = '<table><tr><th>Drink Recipe Title</th><th>Song Count</th><th>Tags</th></tr>';
         for (const res of searchResults) {
             html += `
             <tr>
                 <td>
-                    <a href="playlist.html?id=${res.id}">${res.name}</a>
+                    <a href="drinkRecipe.html/get?creator=${res.creator}?recipeTitle=${res.recipeTitle}">${res.recipeTitle}</a>
                 </td>
-                <td>${res.songCount}</td>
-                <td>${res.tags?.join(', ')}</td>
             </tr>`;
         }
         html += '</table>';
@@ -100,7 +98,7 @@ class getDrinkRecipes extends BindingClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const getDrinkRecipes = new getDrinkRecipes();
+    const getDrinkRecipes = new DrinkRecipes();
     getDrinkRecipes.mount();
 };
 

@@ -15,7 +15,7 @@ export default class TheCookBookClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getDrinkRecipe', 'getDrinkRecipes', 'createDrinkRecipe', 'rateDrinkRecipes', 'deleteDrinkRecipe'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getTokenOrThrow', 'getDrinkRecipe', 'getDrinkRecipes', 'createDrinkRecipe', 'rateDrinkRecipes', 'deleteDrinkRecipe', 'handleError'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -113,7 +113,7 @@ export default class TheCookBookClient extends BindingClass {
      * @param errorCallback (Optional) A function to execute if the call fails.
      * @returns The playlist that has been created.
      */
-    async createPlaylist(creator, recipeTitle, ingredients, instructionSteps, description, descriptionTags, drinkCategory, drinkItem, allergies, ratings, errorCallback) {
+    async createDrinkRecipe(creator, recipeTitle, ingredients, instructionSteps, description, descriptionTags, drinkCategory, drinkItem, allergies, ratings, errorCallback) {
         try {
             const token = await this.getTokenOrThrow("Only authenticated users can create drink recipes.");
             const response = await this.axiosClient.post(`drinkRecipes`, {

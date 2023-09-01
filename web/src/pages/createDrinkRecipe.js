@@ -42,13 +42,13 @@ class CreatePlaylist extends BindingClass {
         createButton.innerText = 'Loading...';
 
         const creator = document.getElementById('creator').value;
-        const recipeTitle = document.getElementById('recipeTitle').value;
+        const recipeTitle = document.getElementById('recipe-title').value;
         const ingredients = document.getElementById('ingredients').value;
-        const instructionSteps = document.getElementById('instructionSteps').value;
+        const instructionSteps = document.getElementById('instruction-steps').value;
         const description = document.getElementById('description').value;
-        const descriptionTags = document.getElementById('descriptionTags').value;
-        const drinkCategory = document.getElementById('drinkCategory').value;
-        const drinkItem = document.getElementById('drinkItem').value;
+        const descriptionTags = document.getElementById('description-tags').value;
+        const drinkCategory = document.getElementById('drink-category').value;
+        const drinkItem = document.getElementById('drink-item').value;
         const allergies = document.getElementById('allergies').value;
         const ratings = null;
 
@@ -64,9 +64,9 @@ class CreatePlaylist extends BindingClass {
      * When the playlist is updated in the datastore, redirect to the view playlist page.
      */
     redirectToViewDrinkRecipe() {
-        const playlist = this.dataStore.get('drinkRecipes');
-        if (playlist != null) {
-            window.location.href = `/drinkRecipes.html?id=${drinkRecipe.creator}/title.html?id=${drinkRecipe.recipeTitle}`;
+        const drinkRecipe = this.dataStore.get('drinkRecipes');
+        if (drinkRecipe != null) {
+            window.location.href = `/drinkRecipes.html/get?id=${drinkRecipe.creator}/title.html?id=${drinkRecipe.recipeTitle}`;
         }
     }
 }
