@@ -6,7 +6,7 @@ import DataStore from '../util/DataStore';
 /**
  * Logic needed for the create playlist page of the website.
  */
-class CreatePlaylist extends BindingClass {
+class CreateRecipe extends BindingClass {
     constructor() {
         super();
         this.bindClassMethods(['mount', 'submit', 'redirectToViewDrinkRecipe'], this);
@@ -58,6 +58,8 @@ class CreatePlaylist extends BindingClass {
             errorMessageDisplay.classList.remove('hidden');
         });
         this.dataStore.set('drinkRecipes', drinkRecipe);
+        console.log('drinkRecipes', drinkRecipe);
+        this.redirectToViewDrinkRecipe()
     }
 
     /**
@@ -66,7 +68,7 @@ class CreatePlaylist extends BindingClass {
     redirectToViewDrinkRecipe() {
         const drinkRecipe = this.dataStore.get('drinkRecipes');
         if (drinkRecipe != null) {
-            window.location.href = `/drinkRecipes.html/get?id=${drinkRecipe.creator}/title.html?id=${drinkRecipe.recipeTitle}`;
+            window.location.href = `/drinkRecipe.html?creator=${drinkRecipe.creator}&recipeTitle=${drinkRecipe.recipeTitle}`;
         }
     }
 }
@@ -75,7 +77,7 @@ class CreatePlaylist extends BindingClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const createDrinkRecipe = new createDrinkRecipe();
+    const createDrinkRecipe = new CreateRecipe();
     createDrinkRecipe.mount();
 };
 

@@ -24,7 +24,7 @@ class ViewDrinkRecipe extends BindingClass {
     async clientLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
         const drinkRecipeCreator = urlParams.get('creator');
-        const drinkRecipeTitle = urlParams.get('title');
+        const drinkRecipeTitle = urlParams.get('recipeTitle');
         document.getElementById('drink-recipe-title').innerText = "Loading Drink Recipe ...";
         const drinkRecipe = await this.client.getDrinkRecipe(drinkRecipeCreator, drinkRecipeTitle);
         this.dataStore.set('drinkRecipes', drinkRecipe);
@@ -54,13 +54,6 @@ class ViewDrinkRecipe extends BindingClass {
 
         document.getElementById('drink-recipe-title').innerText = drinkRecipe.recipeTitle;
         document.getElementById('drink-recipe-creator').innerText = drinkRecipe.creator;
-
-        let tagHtml = '';
-        let tag;
-        for (tag of playlist.tags) {
-            tagHtml += '<div class="tag">' + tag + '</div>';
-        }
-        document.getElementById('tags').innerHTML = tagHtml;
     }
 
     /**
@@ -97,6 +90,9 @@ class ViewDrinkRecipe extends BindingClass {
     }
 
     async deleteDrinkRecipe(){
+        const urlParams = new URLSearchParams(window.location.search);
+        const drinkRecipeCreator = urlParams.get('creator');
+        const drinkRecipeTitle = urlParams.get('recipeTitle');
         await this.client.deleteDrinkRecipe(drinkRecipeCreator, drinkRecipeTitle)
     }
 }
@@ -106,7 +102,7 @@ class ViewDrinkRecipe extends BindingClass {
  */
 const main = async () => {
     const viewDrinkRecipe = new ViewDrinkRecipe();
-    ViewDrinkRecipe.mount();
+    viewDrinkRecipe.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);

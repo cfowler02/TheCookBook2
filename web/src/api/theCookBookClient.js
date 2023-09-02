@@ -15,7 +15,7 @@ export default class TheCookBookClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getTokenOrThrow', 'getDrinkRecipe', 'getDrinkRecipes', 'createDrinkRecipe', 'rateDrinkRecipes', 'deleteDrinkRecipe', 'handleError'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getTokenOrThrow', 'getDrinkRecipe', 'getDrinkRecipes', 'createDrinkRecipe', 'rateDrinkRecipe', 'deleteDrinkRecipe', 'handleError'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -79,7 +79,7 @@ export default class TheCookBookClient extends BindingClass {
      */
     async getDrinkRecipe(creator, recipeTitle, errorCallback) {
         try {
-            const response = await this.axiosClient.get(`drinkRecipes/${creator}/title/${recipeTitle}`);
+            const response = await this.axiosClient.get(`drinkRecipes/get/${creator}/${recipeTitle}`);
             return response.data.drinkRecipes;
         } catch (error) {
             this.handleError(error, errorCallback)
@@ -95,7 +95,8 @@ export default class TheCookBookClient extends BindingClass {
      */
     async deleteDrinkRecipe(creator, recipeTitle, errorCallback) {
         try {
-            const response = await this.axiosClient.delete(`drinkRecipes/${creator}/title/${recipeTitle}`, {
+            const token = await this.getTokenOrThrow("Only authenticated users can create drink recipes.");
+            const response = await this.axiosClient.delete(`drinkRecipes/delete/${creator}/${recipeTitle}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -116,23 +117,23 @@ export default class TheCookBookClient extends BindingClass {
     async createDrinkRecipe(creator, recipeTitle, ingredients, instructionSteps, description, descriptionTags, drinkCategory, drinkItem, allergies, ratings, errorCallback) {
         try {
             const token = await this.getTokenOrThrow("Only authenticated users can create drink recipes.");
-            const response = await this.axiosClient.post(`drinkRecipes`, {
+            const response = await this.axiosClient.post(`drinkRecipes/create`, {
                 creator: creator,
                 recipeTitle: recipeTitle,
-                ingredients: ingredients,
-                instructionSteps: instructionSteps,
+                ingredients: null,
+                instructionSteps: instructionSteps ? instructionSteps.split(','):null,
                 description: description,
-                descriptionTags: descriptionTags,
+                descriptionTags: descriptionTags ? descriptionTags.split(','):null,
                 drinkCategory: drinkCategory,
                 drinkItem: drinkItem,
-                allergies: allergies,
+                allergies: allergies ? allergies.split(','):null,
                 ratings: ratings
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             });
-            return response.data.drinkRecipes;
+            return response.data.drinkRecipe;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
@@ -173,7 +174,7 @@ export default class TheCookBookClient extends BindingClass {
         try {
             const response = await this.axiosClient.get(`drinkRecipes`);
 
-            return response.data.drinkRecipes;
+            return response.data.drinkRecipeModels;
         } catch (error) {
             this.handleError(error, errorCallback)
         }

@@ -51,6 +51,7 @@ class DrinkRecipes extends BindingClass {
      */
     async viewAll() {
         const results = await this.client.getDrinkRecipes();
+        console.log("Results: " + results);
 
         this.dataStore.setState({
             results: results,
@@ -74,7 +75,7 @@ class DrinkRecipes extends BindingClass {
      * @returns A string of HTML suitable for being dropped on the page.
      */
     getHTMLForSearchResults(searchResults) {
-        if (searchResults.length === 0) {
+        if (!searchResults || searchResults.length === 0) {
             return '<h4>No results found</h4>';
         }
 
@@ -83,7 +84,7 @@ class DrinkRecipes extends BindingClass {
             html += `
             <tr>
                 <td>
-                    <a href="drinkRecipe.html/get?creator=${res.creator}?recipeTitle=${res.recipeTitle}">${res.recipeTitle}</a>
+                    <a href="drinkRecipe.html?creator=${res.creator}&recipeTitle=${res.recipeTitle}">${res.recipeTitle}</a>
                 </td>
             </tr>`;
         }
