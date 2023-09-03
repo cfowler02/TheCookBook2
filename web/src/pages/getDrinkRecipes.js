@@ -79,13 +79,22 @@ class DrinkRecipes extends BindingClass {
             return '<h4>No results found</h4>';
         }
 
-        let html = '<table><tr><th>Drink Recipe Title</th><th>Song Count</th><th>Tags</th></tr>';
+        let html = '<table><tr><th>Drink Recipe Title</th><th>Creator</th><th>Drink Item</th><th>Drink Category</th><th>Description</th><th>Description Tags</th><th>Allergies</th><th>Instructions</th><th>Ingredients</th><th>Ratings</th></tr>';
         for (const res of searchResults) {
             html += `
             <tr>
                 <td>
                     <a href="drinkRecipe.html?creator=${res.creator}&recipeTitle=${res.recipeTitle}">${res.recipeTitle}</a>
                 </td>
+                <td>${res.creator}</td>
+                <td>${res.drinkItem}</td>
+                <td>${res.drinkCategory}</td>
+                <td>${res.description}</td>
+                <td>${res.descriptionTags?.join(', ')}</td>
+                <td>${res.allergies?.join(', ')}</td>
+                <td>${res.instructionSteps?.join(', ')}</td>
+                <td>to be added</td>
+                <td>to be added</td>
             </tr>`;
         }
         html += '</table>';
