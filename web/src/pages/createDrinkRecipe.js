@@ -9,9 +9,9 @@ import DataStore from '../util/DataStore';
 class CreateRecipe extends BindingClass {
     constructor() {
         super();
-        this.bindClassMethods(['mount', 'submit', 'redirectToViewDrinkRecipe'], this);
+        this.bindClassMethods(['mount', 'submit'], this);
         this.dataStore = new DataStore();
-        this.dataStore.addChangeListener(this.redirectToViewDrinkRecipe);
+        //this.dataStore.addChangeListener(this.redirectToViewDrinkRecipe);
         this.header = new Header(this.dataStore);
     }
 
@@ -59,7 +59,7 @@ class CreateRecipe extends BindingClass {
         });
         this.dataStore.set('drinkRecipes', drinkRecipe);
         console.log('drinkRecipes', drinkRecipe);
-        this.redirectToViewDrinkRecipe()
+        //this.redirectToViewDrinkRecipe()
     }
 
     /**
