@@ -90,11 +90,11 @@ class DrinkRecipes extends BindingClass {
                 <td>${res.drinkItem}</td>
                 <td>${res.drinkCategory}</td>
                 <td>${res.description}</td>
+                <td>${res.description}</td>
                 <td>${res.descriptionTags?.join(', ')}</td>
                 <td>${res.allergies?.join(', ')}</td>
                 <td>${res.instructionSteps?.join(', ')}</td>
-                <td>to be added</td>
-                <td>to be added</td>
+                <td>${res.ratings}</td>
             </tr>`;
         }
         html += '</table>';

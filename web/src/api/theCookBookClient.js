@@ -80,7 +80,7 @@ export default class TheCookBookClient extends BindingClass {
     async getDrinkRecipe(creator, recipeTitle, errorCallback) {
         try {
             const response = await this.axiosClient.get(`drinkRecipes/get/${creator}/${recipeTitle}`);
-            return response.data.drinkRecipes;
+            return response.data.drinkRecipe;
         } catch (error) {
             this.handleError(error, errorCallback)
         }
@@ -148,8 +148,9 @@ export default class TheCookBookClient extends BindingClass {
      */
     async rateDrinkRecipe(creator, recipeTitle, rating, user, errorCallback) {
         try {
+            console.log(user, rating);
             const token = await this.getTokenOrThrow("Only authenticated users can rate a drink recipe.");
-            const response = await this.axiosClient.put(`drinkRecipes/${creator}/title/${recipeTitle}/rating/${rating}`, {
+            const response = await this.axiosClient.put(`drinkRecipes/rate/`, {
                 creator: creator,
                 recipeTitle: recipeTitle,
                 rating: rating,
@@ -159,7 +160,7 @@ export default class TheCookBookClient extends BindingClass {
                     Authorization: `Bearer ${token}`
                 }
             });
-            return response.data.drinkRecipes;
+            return response.data.drinkRecipe;
         } catch (error) {
             this.handleError(error, errorCallback)
         }

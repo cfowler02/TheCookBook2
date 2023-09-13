@@ -12,8 +12,7 @@ class ViewDrinkRecipe extends BindingClass {
         this.bindClassMethods(['clientLoaded', 'mount', 'addDrinkRecipeToPage', 'addRating', 'deleteDrinkRecipe'], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.addDrinkRecipeToPage);
-        this.dataStore.addChangeListener(this.addRating);
-        this.dataStore.addChangeListener(this.deleteDrinkRecipe);
+        console.log("add drink recipe")
         this.header = new Header(this.dataStore);
         console.log("viewdrinkrecipe constructor");
     }
@@ -48,12 +47,20 @@ class ViewDrinkRecipe extends BindingClass {
      */
     addDrinkRecipeToPage() {
         const drinkRecipe = this.dataStore.get('drinkRecipes');
+        console.log(drinkRecipe);
         if (drinkRecipe == null) {
             return;
         }
-
         document.getElementById('drink-recipe-title').innerText = drinkRecipe.recipeTitle;
         document.getElementById('drink-recipe-creator').innerText = drinkRecipe.creator;
+        document.getElementById('drink-recipe-ingredients').innerText = drinkRecipe.ingredients;
+        document.getElementById('drink-recipe-instructions').innerText = drinkRecipe.instructionSteps;
+        document.getElementById('drink-recipe-description').innerText = drinkRecipe.description;
+        document.getElementById('drink-recipe-description-tags').innerText = drinkRecipe.descriptionTags;
+        document.getElementById('drink-recipe-category').innerText = drinkRecipe.drinkCategory;
+        document.getElementById('drink-recipe-item').innerText = drinkRecipe.drinkItem;
+        document.getElementById('drink-recipe-allergies').innerText = drinkRecipe.allergies;
+        document.getElementById('drink-recipe-ratings').innerText = JSON.stringify(drinkRecipe.ratings);
     }
 
     /**
@@ -66,12 +73,12 @@ class ViewDrinkRecipe extends BindingClass {
         errorMessageDisplay.innerText = ``;
         errorMessageDisplay.classList.add('hidden');
 
-        const drinkRecipe = this.dataStore.get('drinkRecipes');
+        let drinkRecipe = this.dataStore.get('drinkRecipes');
         if (drinkRecipe == null) {
             return;
         }
 
-        document.getElementById('add-rating').innerText = 'Adding...';
+        document.getElementById('rate-drink-recipe').innerText = 'Adding...';
         const rating = document.getElementById('rating').value;
         const user = document.getElementById('user').value;
         const creator = drinkRecipe.creator;
@@ -85,16 +92,21 @@ class ViewDrinkRecipe extends BindingClass {
 
         this.dataStore.set('drinkRecipes', drinkRecipe);
 
-        document.getElementById('add-rating').innerText = 'Add rating';
+        document.getElementById('rate-drink-recipe').innerText = 'Add rating';
         document.getElementById("add-rating-form").reset();
+
+        window.location.href = `/drinkRecipe.html?creator=${creator}&recipeTitle=${recipeTitle}`;
     }
 
     async deleteDrinkRecipe(){
         const urlParams = new URLSearchParams(window.location.search);
         const drinkRecipeCreator = urlParams.get('creator');
         const drinkRecipeTitle = urlParams.get('recipeTitle');
-        await this.client.deleteDrinkRecipe(drinkRecipeCreator, drinkRecipeTitle)
+        await this.client.deleteDrinkRecipe(drinkRecipeCreator, drinkRecipeTitle);
+        console.log("delete");
+        window.location.href = `/index.html`;
     }
+    
 }
 
 /**
