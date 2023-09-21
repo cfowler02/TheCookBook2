@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="assets/viewDrinkRecipe.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="background">
+    <header class="header" id="header"></header>
+    <div class="card">
+        <h2 id="drink-recipe-title"></h2>
+        <h3>Created by: <span id="drink-recipe-creator"></span></h3>
+    </div>
+    <div class="card">
+        <h3 id="drink-recipe-ingredients"></h3>
+        <h3 id="drink-recipe-instructions"></h3>
+        <h3 id="drink-recipe-description"></h3>
+        <h3 id="drink-recipe-description-tags"></h3>
+        <h3 id="drink-recipe-category"></h3>
+        <h3 id="drink-recipe-item"></h3>
+        <h3 id="drink-recipe-allergies"></h3>
+        <h3 id="drink-recipe-ratings"></h3>
+    </div>
+    <div class="card">
+        <h2>Rate Drink Recipe</h2>
+        <form class="card-content" id="add-rating-form">
+            <p class="hidden error" id="error-message"> </p>
+            <p class="form-field">
+                <label>User</label>
+                <input type="text" required class="validated-field" id="user" placeholder="John Doe" autofocus>
+            </p>
+            <p class="form-field">
+                <label>Rating</label>
+                <input type="number" id="rating" placeholder="-1/0/1">
+            </p>
+        </form>
+        <a href="#" class="button" id="rate-drink-recipe">Add Rating</a>
+    </div>
+    <div class="card">
+        <h2>Delete Drink Recipe</h2>
+        <p class="hidden error" id="error-message"> </p>
+        <a href="#" class="button" id="delete-drink-recipe">Delete Drink Recipe</a>
+    </div>
+</body>
+
+</html>

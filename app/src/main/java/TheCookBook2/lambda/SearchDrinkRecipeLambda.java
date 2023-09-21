@@ -13,6 +13,7 @@ public class SearchDrinkRecipeLambda
 
     private final Logger log = LogManager.getLogger();
 
+    /*
     @Override
     public LambdaResponse handleRequest(LambdaRequest<SearchDrinkRecipeRequest> input, Context context) {
         log.info("handleRequest");
@@ -21,6 +22,22 @@ public class SearchDrinkRecipeLambda
                 () -> input.fromQuery(query ->
                         SearchDrinkRecipeRequest.builder()
                                 .withCriteria(query.get("q"))
+                                .build()),
+                (request, serviceComponent) ->
+                        serviceComponent.provideSearchDrinkRecipeActivity().handleRequest(request)
+        );
+    }
+
+     */
+
+    @Override
+    public LambdaResponse handleRequest(LambdaRequest<SearchDrinkRecipeRequest> input, Context context) {
+        log.info("handleRequest");
+        return super.runActivity(
+                () -> input.fromPath(path ->
+                        SearchDrinkRecipeRequest.builder()
+                                .withFilter(path.get("filter"))
+                                .withCriteria(path.get("criteria"))
                                 .build()),
                 (request, serviceComponent) ->
                         serviceComponent.provideSearchDrinkRecipeActivity().handleRequest(request)

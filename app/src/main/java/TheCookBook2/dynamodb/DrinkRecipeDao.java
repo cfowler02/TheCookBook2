@@ -57,10 +57,15 @@ public class DrinkRecipeDao {
         valueMap.put(":criteria", new AttributeValue().withS(criteria));
         List<DrinkRecipe> recipeList = new ArrayList<>();
 
+        System.out.println(criteria);
+        System.out.println(valueMap);
+        System.out.println(filter);
+
         if (filter == "Creator"){
             dynamoDBQueryExpression.withKeyConditionExpression("creator = :criteria")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.query(DrinkRecipe.class, dynamoDBQueryExpression));
+            System.out.println(dynamoDBMapper.query(DrinkRecipe.class, dynamoDBQueryExpression));
         } else if (filter == "RecipeTitle") {
             dynamoDBScanExpression.withFilterExpression("contains(recipe_title, :criteria)")
                     .withExpressionAttributeValues(valueMap);
@@ -69,6 +74,7 @@ public class DrinkRecipeDao {
             dynamoDBScanExpression.withFilterExpression("contains(ingredients, :criteria)")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
+            System.out.println(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
         } else if (filter == "DescriptionTag") {
             dynamoDBScanExpression.withFilterExpression("contains(description_tags, :criteria)")
                     .withExpressionAttributeValues(valueMap);
@@ -82,6 +88,8 @@ public class DrinkRecipeDao {
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
         }
+
+        System.out.println(recipeList);
 
         return recipeList;
     }

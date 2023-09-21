@@ -238,7 +238,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes
+            Path: /foodRecipes/create
             Method: post
 
   CreateDrinkRecipeLambda:
@@ -258,7 +258,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes
+            Path: /drinkRecipes/create
             Method: post
 
   DeleteFoodRecipeLambda:
@@ -278,7 +278,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes
+            Path: /foodRecipes/delete/{creator}/{recipeTitle}
             Method: delete
 
   DeleteDrinkRecipeLambda:
@@ -298,7 +298,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes
+            Path: /drinkRecipes/delete/{creator}/{recipeTitle}
             Method: delete
 
   GetFoodRecipeLambda:
@@ -318,8 +318,10 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes/{creator}/title/{recipeTitle}
+            Path: /foodRecipes/get/{creator}/{recipeTitle}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   GetDrinkRecipeLambda:
     Type: AWS::Serverless::Function
@@ -338,15 +340,17 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes/{creator}/title/{recipeTitle}
+            Path: /drinkRecipes/get/{creator}/{recipeTitle}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   RateFoodRecipeLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.RateFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -358,7 +362,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes/{creator}/title/{recipeTitle}/rating/{rating}
+            Path: /foodRecipes/rate
             Method: put
 
   RateDrinkRecipeLambda:
@@ -366,7 +370,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.RateDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -378,7 +382,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes/{creator}/title/{recipeTitle}/rating/{rating}
+            Path: /drinkRecipes/rate
             Method: put
 
   SearchFoodRecipeLambda:
@@ -386,7 +390,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.SearchFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -398,15 +402,17 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes/search/{filter}/criteria/{criteria}
+            Path: /foodRecipes/search/{filter}/{criteria}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   SearchDrinkRecipeLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.SearchDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -418,15 +424,17 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes/search/{filter}/criteria/{criteria}
+            Path: /drinkRecipes/search/{filter}/{criteria}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   ViewFoodRecipeLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.ViewFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -440,13 +448,15 @@ Resources:
           Properties:
             Path: /foodRecipes
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   ViewDrinkRecipeLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2.lambda.GetDrinkRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.ViewDrinkRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -460,6 +470,8 @@ Resources:
           Properties:
             Path: /drinkRecipes
             Method: get
+            Auth:
+              Authorizer: 'NONE'
 
   #-----------------------------------------------------
   # DynamoDB Configuration

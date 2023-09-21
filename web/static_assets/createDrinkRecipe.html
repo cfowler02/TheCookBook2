@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="assets/createDrinkRecipe.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="background">
+    <header class="header" id="header"></header>
+    <div class="card">
+        <h2>Create Drink Recipe</h2>
+        <form class="card-content" id="create-drink-recipe-form">
+            <p class="hidden error" id="error-message"> </p>
+            <p class="form-field">
+                <label>Name</label>
+                <input type="text" required class="validated-field" id="creator" placeholder="John Doe"
+                    autofocus>
+            </p>
+            <p class="form-field">
+                <label>Recipe Title</label>
+                <input type="text" required class="validated-field" id="recipe-title" placeholder="Screwdriver"
+                    autofocus>
+            </p>
+            <p class="form-field">
+                <label>Ingredients</label>
+                <input type="text" id="ingredients" class="tags" placeholder="Vodka,Orange Juice,Orange Slice,Ice"
+                    data-tip="Must be a comma separated list of tags">
+            </p>
+            <p class="form-field">
+                <label>Instuction Steps</label>
+                <input type="text" id="instruction-steps" class="tags" placeholder="add ice,add 4oz of vodka,fill rest of glass with orange juice,garnish with orange slice"
+                    data-tip="Must be a comma separated list of tags">
+            </p>
+            <p class="form-field">
+                <label>Description</label>
+                <input type="text" required class="validated-field" id="description" placeholder="An orange flavored cocktail made with vodka and orange juice"
+                    autofocus>
+            </p>
+            <p class="form-field">
+                <label>Description Tags</label>
+                <input type="text" id="description-tags" class="tags" placeholder="alcoholic,sweet,orange,vodka"
+                    data-tip="Must be a comma separated list of tags">
+            </p>
+            <p class="form-field">
+                <label>Drink Category</label>
+                <input type="text" required class="validated-field" id="drink-category" placeholder="Cocktail"
+                    autofocus>
+            </p>
+            <p class="form-field">
+                <label>Drink Item</label>
+                <input type="text" required class="validated-field" id="drink-item" placeholder="Screwdriver"
+                    autofocus>
+            </p>
+            <p class="form-field">
+                <label>Allergies</label>
+                <input type="text" id="allergies" class="tags" placeholder="citrus,alcohol"
+                    data-tip="Must be a comma separated list of tags">
+            </p>
+            <p>
+                <a href="#" class="button" id="create">Create Drink Recipe</a>
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>
