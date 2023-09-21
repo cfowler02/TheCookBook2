@@ -19,7 +19,7 @@ The "KEY" constants will be reused a few times below.
 /**
  * Logic needed for the view playlist page of the website.
  */
-class DrinkRecipes extends BindingClass {
+class FoodRecipes extends BindingClass {
     constructor() {
         super();
 

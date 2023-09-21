@@ -6,7 +6,7 @@ import DataStore from "../util/DataStore";
 /**
  * Logic needed for the view playlist page of the website.
  */
-class ViewDrinkRecipe extends BindingClass {
+class ViewFoodRecipe extends BindingClass {
     constructor() {
         super();
         this.bindClassMethods(['clientLoaded', 'mount', 'addFoodRecipeToPage', 'addRating', 'deleteFoodRecipe'], this);
