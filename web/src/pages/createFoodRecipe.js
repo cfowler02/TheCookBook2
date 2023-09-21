@@ -55,30 +55,31 @@ class CreateRecipe extends BindingClass {
         const ingredients = map;
         console.log(ingredients);
         const instructionSteps = document.getElementById('instruction-steps').value;
+        const timeEstimate = document.getElementById('time-estimate').value;
         const description = document.getElementById('description').value;
         const descriptionTags = document.getElementById('description-tags').value;
-        const drinkCategory = document.getElementById('drink-category').value;
-        const drinkItem = document.getElementById('drink-item').value;
+        const foodCategory = document.getElementById('food-category').value;
+        const foodItem = document.getElementById('food-item').value;
         const allergies = document.getElementById('allergies').value;
         const ratings = new Map;
 
-        const drinkRecipe = await this.client.createDrinkRecipe(creator, recipeTitle, ingredients, instructionSteps, description, descriptionTags, drinkCategory, drinkItem, allergies, ratings, (error) => {
+        const foodRecipe = await this.client.createFoodRecipe(creator, recipeTitle, ingredients, instructionSteps, timeEstimate, description, descriptionTags, foodCategory, foodItem, allergies, ratings, (error) => {
             createButton.innerText = origButtonText;
             errorMessageDisplay.innerText = `Error: ${error.message}`;
             errorMessageDisplay.classList.remove('hidden');
         });
-        this.dataStore.set('drinkRecipes', drinkRecipe);
-        console.log('drinkRecipes', drinkRecipe);
-        //this.redirectToViewDrinkRecipe()
+        this.dataStore.set('foodRecipes', foodRecipe);
+        console.log('foodRecipes', foodRecipe);
+        this.redirectToViewFoodRecipe()
     }
 
     /**
      * When the playlist is updated in the datastore, redirect to the view playlist page.
      */
-    redirectToViewDrinkRecipe() {
-        const drinkRecipe = this.dataStore.get('drinkRecipes');
-        if (drinkRecipe != null) {
-            window.location.href = `/drinkRecipe.html?creator=${drinkRecipe.creator}&recipeTitle=${drinkRecipe.recipeTitle}`;
+    redirectToViewFoodRecipe() {
+        const foodRecipe = this.dataStore.get('foodRecipes');
+        if (foodRecipe != null) {
+            window.location.href = `/foodRecipe.html?creator=${foodRecipe.creator}&recipeTitle=${foodRecipe.recipeTitle}`;
         }
     }
 }
@@ -87,8 +88,8 @@ class CreateRecipe extends BindingClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const createDrinkRecipe = new CreateRecipe();
-    createDrinkRecipe.mount();
+    const createFoodRecipe = new CreateRecipe();
+    createFoodRecipe.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);

@@ -226,7 +226,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2..lambda.CreateFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.CreateFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -266,7 +266,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: app
-      Handler: TheCookBook2..lambda.DeleteFoodRecipeLambda::handleRequest
+      Handler: TheCookBook2.lambda.DeleteFoodRecipeLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -402,7 +402,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /foodRecipes/search/{filter}/{criteria}
+            Path: /foodRecipes/search/
             Method: get
             Auth:
               Authorizer: 'NONE'
@@ -424,7 +424,7 @@ Resources:
         TheCookBookService:
           Type: Api
           Properties:
-            Path: /drinkRecipes/search/{filter}/{criteria}
+            Path: /drinkRecipes/search/
             Method: get
             Auth:
               Authorizer: 'NONE'

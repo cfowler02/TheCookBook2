@@ -53,7 +53,7 @@ class ViewDrinkRecipe extends BindingClass {
         }
         document.getElementById('drink-recipe-title').innerText = drinkRecipe.recipeTitle;
         document.getElementById('drink-recipe-creator').innerText = drinkRecipe.creator;
-        document.getElementById('drink-recipe-ingredients').innerText = drinkRecipe.ingredients;
+        document.getElementById('drink-recipe-ingredients').innerText = JSON.stringify(drinkRecipe.ingredients);
         document.getElementById('drink-recipe-instructions').innerText = drinkRecipe.instructionSteps;
         document.getElementById('drink-recipe-description').innerText = drinkRecipe.description;
         document.getElementById('drink-recipe-description-tags').innerText = drinkRecipe.descriptionTags;

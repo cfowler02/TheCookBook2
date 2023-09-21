@@ -29,7 +29,7 @@ class DrinkRecipes extends BindingClass {
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
         this.dataStore.addChangeListener(this.displaySearchResults);
-        console.log("getDrinkRecipes constructor");
+        console.log("getFoodRecipes constructor");
     }
 
     /**
@@ -50,7 +50,7 @@ class DrinkRecipes extends BindingClass {
      * @param evt The "event" object representing the user-initiated event that triggered this method.
      */
     async viewAll() {
-        const results = await this.client.getDrinkRecipes();
+        const results = await this.client.getFoodRecipes();
         console.log("Results: " + results);
 
         this.dataStore.setState({
@@ -62,11 +62,11 @@ class DrinkRecipes extends BindingClass {
      * Pulls search results from the datastore and displays them on the html page.
      */
     displaySearchResults() {
-        const drinkRecipes = this.dataStore.get('results');
+        const foodRecipes = this.dataStore.get('results');
 
-        const viewDrinkRecipesDisplay = document.getElementById('drink-recipe-results-display');
+        const viewFoodRecipesDisplay = document.getElementById('food-recipe-results-display');
 
-        viewDrinkRecipesDisplay.innerHTML = this.getHTMLForSearchResults(drinkRecipes);
+        viewFoodRecipesDisplay.innerHTML = this.getHTMLForSearchResults(foodRecipes);
     }
 
     /**
@@ -79,16 +79,17 @@ class DrinkRecipes extends BindingClass {
             return '<h4>No results found</h4>';
         }
 
-        let html = '<table><tr><th>Drink Recipe Title</th><th>Creator</th><th>Drink Item</th><th>Drink Category</th><th>Ingredients</th><th>Description</th><th>Description Tags</th><th>Allergies</th><th>Instructions</th><th>Ratings</th></tr>';
+        let html = '<table><tr><th>Food Recipe Title</th><th>Creator</th><th>Food Item</th><th>Food Category</th><th>Time Estimate</th><th>Ingredients</th><th>Description</th><th>Description Tags</th><th>Allergies</th><th>Instructions</th><th>Ratings</th></tr>';
         for (const res of searchResults) {
             html += `
             <tr>
                 <td>
-                    <a href="drinkRecipe.html?creator=${res.creator}&recipeTitle=${res.recipeTitle}">${res.recipeTitle}</a>
+                    <a href="foodRecipe.html?creator=${res.creator}&recipeTitle=${res.recipeTitle}">${res.recipeTitle}</a>
                 </td>
                 <td>${res.creator}</td>
-                <td>${res.drinkItem}</td>
-                <td>${res.drinkCategory}</td>
+                <td>${res.foodItem}</td>
+                <td>${res.foodCategory}</td>
+                <td>${res.timeEstimate}</td>
                 <td>${JSON.stringify(res.ingredients)}</td>
                 <td>${res.description}</td>
                 <td>${res.descriptionTags?.join(', ')}</td>
@@ -108,8 +109,8 @@ class DrinkRecipes extends BindingClass {
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const getDrinkRecipes = new DrinkRecipes();
-    getDrinkRecipes.mount();
+    const getFoodRecipes = new FoodRecipes();
+    getFoodRecipes.mount();
 };
 
 window.addEventListener('DOMContentLoaded', main);

@@ -29,7 +29,7 @@ public class SearchDrinkRecipeLambda
     }
 
      */
-
+/*
     @Override
     public LambdaResponse handleRequest(LambdaRequest<SearchDrinkRecipeRequest> input, Context context) {
         log.info("handleRequest");
@@ -39,6 +39,21 @@ public class SearchDrinkRecipeLambda
                                 .withFilter(path.get("filter"))
                                 .withCriteria(path.get("criteria"))
                                 .build()),
+                (request, serviceComponent) ->
+                        serviceComponent.provideSearchDrinkRecipeActivity().handleRequest(request)
+        );
+    }
+    */
+       @Override
+    public LambdaResponse handleRequest(LambdaRequest<SearchDrinkRecipeRequest> input, Context context) {
+        return super.runActivity(
+                () -> {
+                    SearchDrinkRecipeRequest unauthenticatedRequest = input.fromBody(SearchDrinkRecipeRequest.class);
+                    return SearchDrinkRecipeRequest.builder()
+                                    .withFilter(unauthenticatedRequest.getFilter())
+                                    .withCriteria(unauthenticatedRequest.getCriteria())
+                                    .build();
+                },
                 (request, serviceComponent) ->
                         serviceComponent.provideSearchDrinkRecipeActivity().handleRequest(request)
         );
