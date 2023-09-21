@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="assets/viewFoodRecipe.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="background">
+    <header class="header" id="header"></header>
+    <div class="card">
+        <h2 id="food-recipe-title"></h2>
+        <h2>Created by: <span id="food-recipe-creator"></span></h2>
+    </div>
+    <div class="card">
+        <h2>Ingredients: <span id="food-recipe-ingredients"></span></h2>
+        <h2>Instructions: <span id="food-recipe-instructions"></span></h2>
+        <h2>Time Estimate: <span id="food-recipe-time-estimate"></span></h2>
+        <h2>Decription: <span id="food-recipe-description"></span></h2>
+        <h2>Description tags: <span id="food-recipe-description-tags"></span></h2>
+        <h2>Food Category: <span id="food-recipe-category"></span></h2>
+        <h2>Food Item: <span id="food-recipe-item"></span></h2>
+        <h2>Allergies: <span id="food-recipe-allergies"></span></h2>
+        <h2>Ratings: <span id="food-recipe-ratings"></span></h2>
+
+    </div>
+    <div class="card">
+        <h2>Rate Food Recipe</h2>
+        <form class="card-content" id="add-rating-form">
+            <p class="hidden error" id="error-message"> </p>
+            <p class="form-field">
+                <label>User</label>
+                <input type="text" required class="validated-field" id="user" placeholder="John Doe" autofocus>
+            </p>
+            <p class="form-field">
+                <label>Rating</label>
+                <input type="number" id="rating" placeholder="-1/0/1">
+            </p>
+        </form>
+        <a href="#" class="button" id="rate-food-recipe">Add Rating</a>
+    </div>
+    <div class="card">
+        <h2>Delete Drink Recipe</h2>
+        <p class="hidden error" id="error-message"> </p>
+        <a href="#" class="button" id="delete-food-recipe">Delete Food Recipe</a>
+    </div>
+</body>
+
+</html>

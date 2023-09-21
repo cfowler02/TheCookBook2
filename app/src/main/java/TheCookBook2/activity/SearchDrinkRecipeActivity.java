@@ -29,7 +29,11 @@ public class SearchDrinkRecipeActivity {
         String filter = searchDrinkRecipeRequest.getFilter();
 
         List<DrinkRecipe> results = drinkRecipeDao.searchDrinkRecipe(filter, criteria);
+        log.error("FILTER {}", filter);
+        log.error("CRITERIA {}", criteria);
+        log.error("RESULTS {}", results);
         List<DrinkRecipeModel> drinkRecipeModels = new ModelConverter().toDrinkRecipeModelList(results);
+        log.error(drinkRecipeModels);
 
         return SearchDrinkRecipeResult.builder()
                 .withDrinkRecipeModels(drinkRecipeModels)

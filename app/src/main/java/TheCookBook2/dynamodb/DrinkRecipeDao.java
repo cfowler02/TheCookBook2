@@ -8,6 +8,7 @@ import TheCookBook2.exceptions.DrinkRecipeNotFoundException;
 import TheCookBook2.metrics.MetricsConstants;
 import TheCookBook2.metrics.MetricsPublisher;
 
+
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 
 import javax.inject.Inject;
@@ -61,29 +62,36 @@ public class DrinkRecipeDao {
         System.out.println(valueMap);
         System.out.println(filter);
 
-        if (filter == "Creator"){
+        if (filter.equals("Creator")){
+            System.out.println("1");
             dynamoDBQueryExpression.withKeyConditionExpression("creator = :criteria")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.query(DrinkRecipe.class, dynamoDBQueryExpression));
             System.out.println(dynamoDBMapper.query(DrinkRecipe.class, dynamoDBQueryExpression));
-        } else if (filter == "RecipeTitle") {
+        } else if (filter.equals("RecipeTitle")) {
+            System.out.println("2");
             dynamoDBScanExpression.withFilterExpression("contains(recipe_title, :criteria)")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
-        } else if (filter == "Ingredient") {
+        } else if (filter.equals("Ingredient")) {
+            System.out.println("3");
             dynamoDBScanExpression.withFilterExpression("contains(ingredients, :criteria)")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
+            //System.out.print("RECIPELIST {}", recipeList);
             System.out.println(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
-        } else if (filter == "DescriptionTag") {
+        } else if (filter.equals("DescriptionTag")) {
+            System.out.println("4");
             dynamoDBScanExpression.withFilterExpression("contains(description_tags, :criteria)")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
-        } else if (filter == "DrinkCategory") {
+        } else if (filter.equals("DrinkCategory")) {
+            System.out.println("5");
             dynamoDBScanExpression.withFilterExpression("drink_category = :criteria")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));
-        } else if (filter == "DrinkItem") {
+        } else if (filter.equals("DrinkItem")) {
+            System.out.println("6");
             dynamoDBScanExpression.withFilterExpression("drink_recipe = :criteria")
                     .withExpressionAttributeValues(valueMap);
             recipeList.addAll(dynamoDBMapper.scan(DrinkRecipe.class, dynamoDBScanExpression));

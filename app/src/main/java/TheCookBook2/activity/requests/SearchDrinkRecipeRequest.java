@@ -1,6 +1,8 @@
 package TheCookBook2.activity.requests;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
+@JsonDeserialize(builder = SearchDrinkRecipeRequest.Builder.class)
 public class SearchDrinkRecipeRequest {
     private final String criteria;
     private final String filter;
